@@ -8,4 +8,12 @@
         android:id="@+id/fragmentTodoList"
         android:name="com.dmm.todoapp.fragments.FragmentTodoList"
         android:label="FragmentTodoList" />
+    <fragment
+        android:id="@+id/fragmentTodoListDone"
+        android:name="com.dmm.todoapp.fragments.FragmentTodoListDone"
+        android:label="FragmentTodoListDone" />
+    <fragment
+        android:id="@+id/fragmentAbout"
+        android:name="com.dmm.todoapp.fragments.FragmentAbout"
+        android:label="FragmentAbout" />
 </navigation>

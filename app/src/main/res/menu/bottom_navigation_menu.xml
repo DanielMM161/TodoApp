@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragmentTodoList"
+        android:title="Todo List"
+        android:icon="@drawable/ic_baseline_list_24"
+        />
+
+    <item
+        android:id="@+id/fragmentTodoListDone"
+        android:title="Todo Done"
+        android:icon="@drawable/ic_baseline_done_all_24"
+        />
+
+    <item
+        android:id="@+id/fragmentAbout"
+        android:title="About"
+        android:icon="@drawable/ic_baseline_person_24"
+        />
+
+</menu>
