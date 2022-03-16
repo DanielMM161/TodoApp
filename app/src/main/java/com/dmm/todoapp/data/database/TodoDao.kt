@@ -13,6 +13,9 @@ interface TodoDao {
     @Query("SELECT * FROM todo_table WHERE todo_done = 0")
     fun getAllTodo(): Flow<List<Todo>>
 
+    @Query("SELECT * FROM todo_table WHERE todo_done = 1")
+    fun getAllTodoDone(): Flow<List<Todo>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(todo: Todo)
 }

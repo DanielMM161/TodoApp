@@ -8,6 +8,7 @@ import com.dmm.todoapp.data.model.Todo
 class TodoRepository(private val todoDao: TodoDao) {
 
     val allTodo: LiveData<List<Todo>> = todoDao.getAllTodo().asLiveData()
+    val todoDone: LiveData<List<Todo>> = todoDao.getAllTodoDone().asLiveData()
 
     suspend fun insertTodo(todo: Todo) {
         todoDao.insert(todo)
