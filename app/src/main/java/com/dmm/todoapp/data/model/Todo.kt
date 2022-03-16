@@ -1,4 +1,4 @@
-package com.dmm.todoapp.data
+package com.dmm.todoapp.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
