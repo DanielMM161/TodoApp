@@ -22,6 +22,20 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
         allTodoDone = todoRepository.todoDone
     }
 
+    private fun addNewEntry(name: String, todoDone: Boolean): Todo {
+        return Todo(
+            name = name,
+            todoDone = todoDone
+        )
+    }
+
+    fun updateTodo(todo: Todo, todoDone: Boolean) {
+        viewModelScope.launch {
+            todoRepository.updateTodo(todo.copy(todoDone = todoDone))
+        }
+
+    }
+
     fun addTodo(name: String) {
         viewModelScope.launch {
             val todo = Todo(name = name, todoDone = false)

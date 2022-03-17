@@ -1,9 +1,11 @@
 package com.dmm.todoapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -40,13 +42,17 @@ class FragmentTodoListDone : Fragment() {
         todoViewModel = ViewModelProvider(this).get(TodoViewModel::class.java)
 
         todoViewModel.allTodoDone.observe(viewLifecycleOwner, Observer { todoList ->
-            todoAdapter.todoList = todoList
+            todoList.let {
+                todoAdapter.submitList(it)
+            }
         })
 
     }
 
     private fun setupRecyclerView() = binding.rvTodoDone.apply {
-        todoAdapter = TodoListAdapter()
+        todoAdapter = TodoListAdapter { it ->
+            todoViewModel.updateTodo(it, false)
+        }
         adapter = todoAdapter
         layoutManager = LinearLayoutManager(requireContext())
     }
