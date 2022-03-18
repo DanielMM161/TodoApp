@@ -37,14 +37,14 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun addTodo(name: String) {
+    fun addTodo(name: String, description: String) {
         viewModelScope.launch {
             val todo = Todo(name = name, description = "" ,todoDone = false)
             todoRepository.insertTodo(todo)
         }
     }
 
-    fun validateNameTodo(nameTodo: String): Boolean {
-        return !nameTodo.isBlank()
+    fun validateTask(nameTodo: String, descriptionTodo: String): Boolean {
+        return !nameTodo.isBlank() && !descriptionTodo.isBlank()
     }
 }

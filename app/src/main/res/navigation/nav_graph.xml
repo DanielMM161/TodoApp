@@ -23,5 +23,9 @@
     <fragment
         android:id="@+id/fragmentAddTodo"
         android:name="com.dmm.todoapp.fragments.FragmentAddTodo"
-        android:label="FragmentAddTodo" />
+        android:label="FragmentAddTodo" >
+        <action
+            android:id="@+id/action_fragmentAddTodo_to_fragmentTodoList"
+            app:destination="@id/fragmentTodoList" />
+    </fragment>
 </navigation>

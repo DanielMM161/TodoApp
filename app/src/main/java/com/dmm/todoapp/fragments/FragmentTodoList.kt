@@ -59,26 +59,6 @@ class FragmentTodoList : Fragment() {
         })
     }
 
-    fun showDialog() {
-        val builder = AlertDialog.Builder(context)
-        val inflater = requireActivity().layoutInflater
-        val dialogLayout = inflater.inflate(R.layout.dialog, null)
-        val editText: TextInputEditText = dialogLayout.findViewById(R.id.task_input_text)
-
-        builder.setView(dialogLayout)
-            .setPositiveButton("Save", DialogInterface.OnClickListener { dialog, id ->
-                val todoName: String = editText.text.toString()
-                if(todoViewModel.validateNameTodo(todoName)) {
-                    todoViewModel.addTodo(todoName)
-                }
-            })
-            .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
-                dialog.cancel()
-            })
-        builder.create()
-        builder.show()
-    }
-
     private fun setRecyclerView() = binding.rvTodo.apply {
         todoAdapter =  TodoListAdapter { it ->
             todoViewModel.updateTodo(it, true)
