@@ -1,9 +1,14 @@
 package com.dmm.todoapp.adapters
 
+import android.content.Context
+import android.text.SpannableString
+import android.text.style.StrikethroughSpan
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
+import android.view.View.OnLongClickListener
 import android.view.ViewGroup
-import android.widget.CheckBox
-import androidx.recyclerview.widget.AsyncListDiffer
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,12 +17,21 @@ import com.dmm.todoapp.data.model.Todo
 import com.dmm.todoapp.databinding.ItemTodoListBinding
 import com.google.android.material.checkbox.MaterialCheckBox
 
+
 class TodoListAdapter(private val onItemClicked: (Todo) -> Unit) :
     ListAdapter<Todo, TodoListAdapter.TodoListViewHolder>(diffCallback) {
 
-    class TodoListViewHolder(private var binding: ItemTodoListBinding) : RecyclerView.ViewHolder(binding.root) {
+    class TodoListViewHolder(private var binding: ItemTodoListBinding, private var context: Context) : RecyclerView.ViewHolder(binding.root) {
         fun bind(todo: Todo) {
-            binding.cbTodo.text = todo.name
+            if(todo.todoDone) {
+                val string = SpannableString(todo.name)
+                string.setSpan(StrikethroughSpan(), 0, string.length, 0)
+                binding.cbTodo.text = string
+                binding.cbTodo.isChecked = true
+            } else {
+                binding.tvNameTodo.text = todo.name
+                binding.tvMultiline.text = todo.description
+            }
         }
     }
 
@@ -27,8 +41,9 @@ class TodoListAdapter(private val onItemClicked: (Todo) -> Unit) :
                 LayoutInflater.from(
                     parent.context
                 )
-            )
+            ),parent.context
         )
+
     }
 
     companion object {
@@ -47,9 +62,11 @@ class TodoListAdapter(private val onItemClicked: (Todo) -> Unit) :
     override fun onBindViewHolder(holder: TodoListAdapter.TodoListViewHolder, position: Int) {
         val itemCurrent = getItem(position)
         val checkBox = holder.itemView.findViewById(R.id.cb_todo) as MaterialCheckBox
-        checkBox.setOnCheckedChangeListener { compoundButton, b ->
+        checkBox.setOnClickListener {
             onItemClicked(itemCurrent)
         }
         holder.bind(itemCurrent)
     }
 }
+
+

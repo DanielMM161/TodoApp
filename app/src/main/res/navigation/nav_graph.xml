@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/fragmentTodoList"
         android:name="com.dmm.todoapp.fragments.FragmentTodoList"
-        android:label="FragmentTodoList" />
+        android:label="FragmentTodoList" >
+        <action
+            android:id="@+id/action_fragmentTodoList_to_fragmentAddTodo"
+            app:destination="@id/fragmentAddTodo" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentTodoListDone"
         android:name="com.dmm.todoapp.fragments.FragmentTodoListDone"
@@ -16,4 +20,8 @@
         android:id="@+id/fragmentAbout"
         android:name="com.dmm.todoapp.fragments.FragmentAbout"
         android:label="FragmentAbout" />
+    <fragment
+        android:id="@+id/fragmentAddTodo"
+        android:name="com.dmm.todoapp.fragments.FragmentAddTodo"
+        android:label="FragmentAddTodo" />
 </navigation>

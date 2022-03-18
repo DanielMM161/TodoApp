@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TodoApp</string>
+    <string name="todo_done"> <strike> %s </strike> </string>
 </resources>

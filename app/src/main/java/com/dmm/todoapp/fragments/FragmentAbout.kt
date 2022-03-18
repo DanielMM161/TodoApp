@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.dmm.todoapp.R
+import com.dmm.todoapp.databinding.FragmentAboutBinding
 import com.dmm.todoapp.databinding.FragmentTodoListDoneBinding
 
 class FragmentAbout : Fragment() {
 
-    private lateinit var _binding : FragmentTodoListDoneBinding
+    private lateinit var _binding : FragmentAboutBinding
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,6 +25,6 @@ class FragmentAbout : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding = FragmentTodoListDoneBinding.bind(view)
+        _binding = FragmentAboutBinding.bind(view)
     }
 }

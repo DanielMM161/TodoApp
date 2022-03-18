@@ -10,6 +10,8 @@ data class Todo (
     val id: Int = 0,
     @ColumnInfo(name = "todo_name")
     val name: String,
+    @ColumnInfo(name = "todo_description")
+    val description: String,
     @ColumnInfo(name = "todo_done")
     val todoDone: Boolean
         )

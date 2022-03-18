@@ -2,24 +2,42 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" >
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/task_text_field"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/tv_add_new_task"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Task Name"
-        app:counterMaxLength="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        >
+        android:layout_marginBottom="20dp"
+        android:padding="12dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        tools:text="Add New Task"
+        android:text="Add New Task"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/task_text_field"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:hint="Task Name"
+        app:counterMaxLength="100"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_new_task">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/task_input_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:inputType="text"
+            android:focusedByDefault="true"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
