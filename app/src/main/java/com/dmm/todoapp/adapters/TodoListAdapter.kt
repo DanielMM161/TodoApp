@@ -1,27 +1,25 @@
 package com.dmm.todoapp.adapters
 
-import android.content.Context
 import android.text.SpannableString
 import android.text.style.StrikethroughSpan
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
-import android.view.View.OnLongClickListener
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dmm.todoapp.R
 import com.dmm.todoapp.data.model.Todo
 import com.dmm.todoapp.databinding.ItemTodoListBinding
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.checkbox.MaterialCheckBox
 
 
-class TodoListAdapter(private val onItemClicked: (Todo) -> Unit) :
-    ListAdapter<Todo, TodoListAdapter.TodoListViewHolder>(diffCallback) {
+class TodoListAdapter(
+    private val onCheckBoxClicked: (Todo) -> Unit,
+    private val onCardViewClicked:(Todo) -> Unit
+) : ListAdapter<Todo, TodoListAdapter.TodoListViewHolder>(diffCallback) {
 
-    class TodoListViewHolder(private var binding: ItemTodoListBinding, private var context: Context) : RecyclerView.ViewHolder(binding.root) {
+    class TodoListViewHolder(private var binding: ItemTodoListBinding, private var onCheckBoxClicked: (Todo) -> Unit, private var onCardViewClicked: (Todo) -> Unit) : RecyclerView.ViewHolder(binding.root) {
         fun bind(todo: Todo) {
             if(todo.todoDone) {
                 val string = SpannableString(todo.name)
@@ -32,17 +30,15 @@ class TodoListAdapter(private val onItemClicked: (Todo) -> Unit) :
                 binding.tvNameTodo.text = todo.name
                 binding.tvMultiline.text = todo.description
             }
+
+            binding.cbTodo.setOnClickListener {  onCheckBoxClicked(todo) }
+            binding.materialCardView.setOnClickListener { onCardViewClicked(todo) }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoListAdapter.TodoListViewHolder {
-        return TodoListViewHolder(
-            ItemTodoListBinding.inflate(
-                LayoutInflater.from(
-                    parent.context
-                )
-            ),parent.context
-        )
+        val binding =  ItemTodoListBinding.inflate(LayoutInflater.from(parent.context))
+        return TodoListViewHolder(binding, onCheckBoxClicked, onCardViewClicked)
 
     }
 
@@ -62,9 +58,15 @@ class TodoListAdapter(private val onItemClicked: (Todo) -> Unit) :
     override fun onBindViewHolder(holder: TodoListAdapter.TodoListViewHolder, position: Int) {
         val itemCurrent = getItem(position)
         val checkBox = holder.itemView.findViewById(R.id.cb_todo) as MaterialCheckBox
-        checkBox.setOnClickListener {
-            onItemClicked(itemCurrent)
-        }
+        val mCardView = holder.itemView.findViewById(R.id.material_card_view) as MaterialCardView
+//        checkBox.setOnClickListener {
+//            onItemClicked(itemCurrent, "checkBox")
+//        }
+//
+//        mCardView.setOnClickListener {
+//            onItemClicked(itemCurrent, "mCardView")
+//        }
+
         holder.bind(itemCurrent)
     }
 }

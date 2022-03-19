@@ -1,17 +1,9 @@
 package com.dmm.todoapp.fragments
 
-import android.app.Activity
-import android.app.AlertDialog
-import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -20,9 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dmm.todoapp.R
 import com.dmm.todoapp.adapters.TodoListAdapter
+import com.dmm.todoapp.data.model.Todo
 import com.dmm.todoapp.data.viewmodel.TodoViewModel
 import com.dmm.todoapp.databinding.FragmentTodoListBinding
-import com.google.android.material.textfield.TextInputEditText
 
 
 class FragmentTodoList : Fragment() {
@@ -60,9 +52,13 @@ class FragmentTodoList : Fragment() {
     }
 
     private fun setRecyclerView() = binding.rvTodo.apply {
-        todoAdapter =  TodoListAdapter { it ->
-            todoViewModel.updateTodo(it, true)
+        var cbListener : (Todo) -> Unit = { todo ->
+            todoViewModel.updateTodo(todo, true)
         }
+        var cvListener : (Todo) -> Unit = { todo ->
+            var a = ""
+        }
+        todoAdapter =  TodoListAdapter(cbListener, cvListener )
         adapter = todoAdapter
         layoutManager = LinearLayoutManager(requireContext())
     }

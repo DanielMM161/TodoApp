@@ -1,22 +1,18 @@
 package com.dmm.todoapp.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.dmm.todoapp.R
 import com.dmm.todoapp.adapters.TodoListAdapter
+import com.dmm.todoapp.data.model.Todo
 import com.dmm.todoapp.data.viewmodel.TodoViewModel
 import com.dmm.todoapp.databinding.FragmentTodoListDoneBinding
-import kotlinx.coroutines.launch
 
 class FragmentTodoListDone : Fragment() {
 
@@ -50,9 +46,13 @@ class FragmentTodoListDone : Fragment() {
     }
 
     private fun setupRecyclerView() = binding.rvTodoDone.apply {
-        todoAdapter = TodoListAdapter { it ->
-            todoViewModel.updateTodo(it, false)
+        var cbListener : (Todo) -> Unit = { todo ->
+            todoViewModel.updateTodo(todo, false)
         }
+        var cvListener : (Todo) -> Unit = { todo ->
+
+        }
+        todoAdapter = TodoListAdapter(cbListener, cvListener)
         adapter = todoAdapter
         layoutManager = LinearLayoutManager(requireContext())
     }

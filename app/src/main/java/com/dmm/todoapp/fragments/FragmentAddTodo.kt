@@ -49,8 +49,8 @@ class FragmentAddTodo : Fragment() {
         if(viewModel.validateTask(title, description)) {
             viewModel.addTodo(title, description)
             findNavController().navigate(R.id.action_fragmentAddTodo_to_fragmentTodoList)
+        } else {
+            Toast.makeText(requireContext(), "Debes de introducir texto en ambos campos", Toast.LENGTH_LONG).show()
         }
-
-        Toast.makeText(requireContext(), "Debes de introducir texto en ambos campos", Toast.LENGTH_LONG).show()
     }
 }
