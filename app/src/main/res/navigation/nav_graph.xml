@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_fragmentTodoList_to_fragmentAddTodo"
             app:destination="@id/fragmentAddTodo" />
+        <action
+            android:id="@+id/action_fragmentTodoList_to_fragmentDetailTodo"
+            app:destination="@id/fragmentDetailTodo" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTodoListDone"
@@ -26,6 +29,18 @@
         android:label="FragmentAddTodo" >
         <action
             android:id="@+id/action_fragmentAddTodo_to_fragmentTodoList"
+            app:destination="@id/fragmentTodoList" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetailTodo"
+        android:name="com.dmm.todoapp.fragments.FragmentDetailTodo"
+        android:label="FragmentDetailTodo" >
+        <argument
+            android:name="indexTodo"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_fragmentDetailTodo_to_fragmentTodoList"
             app:destination="@id/fragmentTodoList" />
     </fragment>
 </navigation>

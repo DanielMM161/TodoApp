@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -62,5 +63,4 @@ dependencies {
     annotationProcessor 'androidx.room:room-compiler:2.4.2'
     // To use Kotlin annotation processing tool (kapt)
     kapt 'androidx.room:room-compiler:2.4.2'
-
 }

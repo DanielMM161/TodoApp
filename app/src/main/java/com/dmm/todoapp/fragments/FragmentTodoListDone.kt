@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,7 +20,7 @@ class FragmentTodoListDone : Fragment() {
     private lateinit var _binding: FragmentTodoListDoneBinding
     private val binding get() = _binding!!
 
-    private lateinit var todoViewModel: TodoViewModel
+    private val todoViewModel: TodoViewModel by activityViewModels()
     private lateinit var todoAdapter: TodoListAdapter
 
     override fun onCreateView(
@@ -35,8 +36,6 @@ class FragmentTodoListDone : Fragment() {
         _binding = FragmentTodoListDoneBinding.bind(view)
         setupRecyclerView()
 
-        todoViewModel = ViewModelProvider(this).get(TodoViewModel::class.java)
-
         todoViewModel.allTodoDone.observe(viewLifecycleOwner, Observer { todoList ->
             todoList.let {
                 todoAdapter.submitList(it)
@@ -46,12 +45,9 @@ class FragmentTodoListDone : Fragment() {
     }
 
     private fun setupRecyclerView() = binding.rvTodoDone.apply {
-        var cbListener : (Todo) -> Unit = { todo ->
-            todoViewModel.updateTodo(todo, false)
-        }
-        var cvListener : (Todo) -> Unit = { todo ->
+        var cbListener : (Todo) -> Unit = { todo -> todoViewModel.updateTodo(todo, false) }
+        var cvListener : (Todo) -> Unit = { todo -> }
 
-        }
         todoAdapter = TodoListAdapter(cbListener, cvListener)
         adapter = todoAdapter
         layoutManager = LinearLayoutManager(requireContext())

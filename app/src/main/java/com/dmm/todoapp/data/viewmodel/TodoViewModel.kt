@@ -47,4 +47,10 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
     fun validateTask(nameTodo: String, descriptionTodo: String): Boolean {
         return !nameTodo.isBlank() && !descriptionTodo.isBlank()
     }
+
+    fun deleteTodo(todo: Todo) {
+        viewModelScope.launch {
+            todoRepository.deleteTodo(todo)
+        }
+    }
 }

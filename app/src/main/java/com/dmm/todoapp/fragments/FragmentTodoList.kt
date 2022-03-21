@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -22,7 +23,7 @@ class FragmentTodoList : Fragment() {
     private lateinit var _binding: FragmentTodoListBinding
     private val binding get() = _binding!!
 
-    private lateinit var todoViewModel: TodoViewModel
+    private val todoViewModel: TodoViewModel by activityViewModels()
     private lateinit var todoAdapter: TodoListAdapter
 
     override fun onCreateView(
@@ -37,8 +38,6 @@ class FragmentTodoList : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentTodoListBinding.bind(view)
         setRecyclerView()
-
-        todoViewModel = ViewModelProvider(this).get(TodoViewModel::class.java)
 
         binding.fbAddTask.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentTodoList_to_fragmentAddTodo)
@@ -56,7 +55,12 @@ class FragmentTodoList : Fragment() {
             todoViewModel.updateTodo(todo, true)
         }
         var cvListener : (Todo) -> Unit = { todo ->
-            var a = ""
+            val todoList = todoViewModel.allTodo.value
+            val indexTodo = todoList!!.indexOf(todo)
+            val action = FragmentTodoListDirections.actionFragmentTodoListToFragmentDetailTodo(
+                indexTodo = indexTodo
+            )
+            findNavController().navigate(action)
         }
         todoAdapter =  TodoListAdapter(cbListener, cvListener )
         adapter = todoAdapter

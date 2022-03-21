@@ -57,16 +57,6 @@ class TodoListAdapter(
 
     override fun onBindViewHolder(holder: TodoListAdapter.TodoListViewHolder, position: Int) {
         val itemCurrent = getItem(position)
-        val checkBox = holder.itemView.findViewById(R.id.cb_todo) as MaterialCheckBox
-        val mCardView = holder.itemView.findViewById(R.id.material_card_view) as MaterialCardView
-//        checkBox.setOnClickListener {
-//            onItemClicked(itemCurrent, "checkBox")
-//        }
-//
-//        mCardView.setOnClickListener {
-//            onItemClicked(itemCurrent, "mCardView")
-//        }
-
         holder.bind(itemCurrent)
     }
 }
