@@ -24,13 +24,11 @@ class TodoListAdapter(
             if(todo.todoDone) {
                 val string = SpannableString(todo.name)
                 string.setSpan(StrikethroughSpan(), 0, string.length, 0)
-                binding.cbTodo.text = string
                 binding.cbTodo.isChecked = true
-            } else {
-                binding.tvNameTodo.text = todo.name
-                binding.tvMultiline.text = todo.description
             }
-
+            binding.tvNameTodo.text = todo.name
+            binding.tvMultiline.text = todo.description
+            
             binding.cbTodo.setOnClickListener {  onCheckBoxClicked(todo) }
             binding.materialCardView.setOnClickListener { onCardViewClicked(todo) }
         }

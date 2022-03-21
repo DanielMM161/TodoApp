@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(setOf(R.id.fragmentTodoList, R.id.fragmentTodoListDone, R.id.fragmentAbout))
         setupActionBarWithNavController(navController, appBarConfiguration)
+
         binding.bottomNavigation.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() ||super.onSupportNavigateUp()
     }
 }

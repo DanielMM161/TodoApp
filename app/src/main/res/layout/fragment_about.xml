@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="fragments.FragmentAbout">
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/tv_todo_list_done"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="FRAGMENT ABOUT"/>
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       tools:context="fragments.FragmentAbout">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+      <ImageView
+          android:id="@+id/image_dmm"
+          android:layout_width="300dp"
+          android:layout_height="300dp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:layout_marginTop="100dp"
+          android:src="@drawable/danielmoreno"/>
+
+      <TextView
+         android:id="@+id/item_description_myself"
+          android:layout_width="300dp"
+          android:layout_height="wrap_content"
+          app:layout_constraintTop_toBottomOf="@+id/image_dmm"
+          app:layout_constraintStart_toStartOf="@+id/image_dmm"
+          app:layout_constraintEnd_toEndOf="@+id/image_dmm"
+          android:layout_marginTop="16dp"
+          android:text="Hi I'm Daniel Moreno Marquez From Spain and I'm a mobile developer. This is my demostration Todo App where I do in practice my knowledge about android system and jetpack ecosystem "/>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

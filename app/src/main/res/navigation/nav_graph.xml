@@ -22,7 +22,11 @@
     <fragment
         android:id="@+id/fragmentAbout"
         android:name="com.dmm.todoapp.fragments.FragmentAbout"
-        android:label="FragmentAbout" />
+        android:label="FragmentAbout" >
+        <action
+            android:id="@+id/action_fragmentAbout_to_fragmentTodoList"
+            app:destination="@id/fragmentTodoList" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentAddTodo"
         android:name="com.dmm.todoapp.fragments.FragmentAddTodo"
