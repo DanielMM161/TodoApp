@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/fragmentTodoList"
-        android:title="Todo List"
+        android:title="@string/tasks_list"
         android:icon="@drawable/ic_baseline_list_24"
         />
 
     <item
         android:id="@+id/fragmentTodoListDone"
-        android:title="Todo Done"
+        android:title="@string/tasks_done"
         android:icon="@drawable/ic_baseline_done_all_24"
         />
 
     <item
         android:id="@+id/fragmentAbout"
-        android:title="About"
+        android:title="@string/about"
         android:icon="@drawable/ic_baseline_person_24"
         />
 

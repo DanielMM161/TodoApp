@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TodoApp</string>
+    <string name="tasks_list">Tareas</string>
+    <string name="tasks_done">Tareas Terminadas</string>
+    <string name="about">Sobre mi</string>
+    <string name="todo_app">Todo App</string>
+    <string name="title_task">Título de la tarea</string>
+    <string name="description_task">Descripción de la tarea</string>
+    <string name="delete">Eliminar</string>
+    <string name="delete_dialog">Eliminar -- %s</string>
+    <string name="message_dialog">Vas a eliminar el elemento %s, ¿ Estas seguro de esta acción?</string>
+    <string name="no_dialog">No</string>
+    <string name="yes_dialog">Si</string>
+    <string name="edit">Editar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Guardar</string>
+    <string name="about_descripton">Hola, me llamo Daniel Moreno Marquez y soy un desarrollador movil de España, Esta app es una demostración donde pongo en practica mis conocimientos del ecosistema de Android</string>
+</resources>

@@ -77,10 +77,10 @@ class FragmentDetailTodo : Fragment() {
 
     private fun showDialog() {
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Delete ${todoSelected.name}")
-            .setMessage("You are going to delete the element ${todoSelected.name}, are you sure of this action ?")
-            .setNegativeButton("No") { _, _ -> }
-            .setPositiveButton("Yes") { _, _ ->
+            .setTitle("${getString(R.string.delete_dialog, todoSelected.name)}")
+            .setMessage("${getString(R.string.message_dialog, todoSelected.name)}")
+            .setNegativeButton("${getString(R.string.no_dialog)}") { _, _ -> }
+            .setPositiveButton("${getString(R.string.yes_dialog)}") { _, _ ->
                 todoViewModel.deleteTodo(todoSelected)
                 findNavController().navigate(R.id.action_fragmentDetailTodo_to_fragmentTodoList)
             }

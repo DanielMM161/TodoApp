@@ -34,7 +34,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:textAppearance="?attr/textAppearanceHeadline5"
-            android:text="Todo Name Test"/>
+            tools:text="Todo Name Test"/>
         
         <View
             android:id="@+id/view_divider"
@@ -52,11 +52,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/view_divider"
             app:layout_constraintStart_toStartOf="parent"
-
             android:layout_marginTop="5dp"
             android:maxLines="3"
             android:lines="3"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ssssssssssssssssssssssssssssssssss."
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ssssssssssssssssssssssssssssssssss."
             tools:layout_editor_absoluteX="15dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
