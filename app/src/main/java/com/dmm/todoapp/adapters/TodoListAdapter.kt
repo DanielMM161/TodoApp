@@ -7,12 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.dmm.todoapp.R
 import com.dmm.todoapp.data.model.Todo
 import com.dmm.todoapp.databinding.ItemTodoListBinding
-import com.google.android.material.card.MaterialCardView
-import com.google.android.material.checkbox.MaterialCheckBox
-
+import com.dmm.todoapp.utils.Utils
 
 class TodoListAdapter(
     private val onCheckBoxClicked: (Todo) -> Unit,
@@ -21,11 +18,17 @@ class TodoListAdapter(
 
     class TodoListViewHolder(private var binding: ItemTodoListBinding, private var onCheckBoxClicked: (Todo) -> Unit, private var onCardViewClicked: (Todo) -> Unit) : RecyclerView.ViewHolder(binding.root) {
         fun bind(todo: Todo) {
+            var date = Utils.convertDateToFormattedDate(todo.date)
+
             if(todo.todoDone) {
-                val string = SpannableString(todo.name)
+                val string = SpannableString(date)
                 string.setSpan(StrikethroughSpan(), 0, string.length, 0)
+                binding.cbTodo.text = string
                 binding.cbTodo.isChecked = true
+            } else {
+                binding.cbTodo.text = date
             }
+
             binding.tvNameTodo.text = todo.name
             binding.tvMultiline.text = todo.description
             

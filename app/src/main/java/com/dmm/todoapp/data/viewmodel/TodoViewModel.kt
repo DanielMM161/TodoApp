@@ -8,6 +8,8 @@ import com.dmm.todoapp.data.model.Todo
 import com.dmm.todoapp.data.TodoRepository
 import com.dmm.todoapp.data.database.TodoDatabase
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TodoViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -22,14 +24,6 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
         allTodoDone = todoRepository.todoDone
     }
 
-    private fun addNewEntry(name: String, todoDone: Boolean): Todo {
-        return Todo(
-            name = name,
-            description = "",
-            todoDone = todoDone
-        )
-    }
-
     fun updateTodo(todo: Todo, todoDone: Boolean) {
         viewModelScope.launch {
             todoRepository.updateTodo(todo.copy(todoDone = todoDone))
@@ -39,7 +33,7 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
 
     fun addTodo(name: String, description: String) {
         viewModelScope.launch {
-            val todo = Todo(name = name, description = description ,todoDone = false)
+            val todo = Todo(name = name, description = description ,todoDone = false, date = Calendar.getInstance().time)
             todoRepository.insertTodo(todo)
         }
     }
@@ -52,5 +46,11 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             todoRepository.deleteTodo(todo)
         }
+    }
+
+    fun getLongCurrentDate(): Long {
+        val formatter = SimpleDateFormat("E MM d", Locale.getDefault())
+        val calendar = Calendar.getInstance()
+        return formatter.format(calendar.time).toLong()
     }
 }

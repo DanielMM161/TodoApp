@@ -3,6 +3,7 @@ package com.dmm.todoapp.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity(tableName = "todo_table")
 data class Todo (
@@ -13,5 +14,7 @@ data class Todo (
     @ColumnInfo(name = "todo_description")
     val description: String,
     @ColumnInfo(name = "todo_done")
-    val todoDone: Boolean
+    val todoDone: Boolean,
+    @ColumnInfo(name = "date")
+    val date: Date
         )
