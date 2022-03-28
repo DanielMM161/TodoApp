@@ -32,6 +32,9 @@ class FragmentAddTodo : Fragment() {
         binding.buttonSave.setOnClickListener {
             addTodo()
         }
+
+        titleFocusListener()
+        descriptionFocusListener()
     }
 
     override fun onCreateView(
@@ -43,15 +46,68 @@ class FragmentAddTodo : Fragment() {
     }
 
     private fun addTodo() {
-        val title: String = binding.tiTitle.text.toString()
-        val description: String = binding.tiDescription.text.toString()
+        var titleTask = getTitleTask()
+        var descriptionTask = getDescriptionTask()
 
-        if(viewModel.validateTask(title, description)) {
-            viewModel.addTodo(title, description)
+        if(viewModel.validateTask(titleTask, descriptionTask)) {
+            viewModel.addTodo(titleTask, titleTask)
             findNavController().navigate(R.id.action_fragmentAddTodo_to_fragmentTodoList)
-        } else {
-            binding.tiLayoutTitle.error = getString(R.string.error_title)
-            binding.tiLayoutDescription.error = getString(R.string.error_description)
         }
+
+        binding.tiLayoutTitle.error = validateTitle()
+
+        binding.tiLayoutDescription.error = validateDescription()
+    }
+
+    private fun titleFocusListener() {
+        binding.tiTitle.setOnFocusChangeListener { _, focused ->
+            if(!focused) {
+                binding.tiLayoutTitle.error = validateTitle()
+            }
+        }
+    }
+
+    private fun descriptionFocusListener() {
+        binding.tiDescription.setOnFocusChangeListener { _, focused ->
+            if(!focused) {
+                binding.tiLayoutDescription.error = validateDescription()
+            }
+        }
+    }
+
+    private fun validateTitle(): String? {
+        var titleTask = getTitleTask()
+
+        if(titleTask.length > 35) {
+            return "Maximo de caracteres 35"
+        }
+
+        if(titleTask.isEmpty()) {
+            return getString(R.string.error_title)
+        }
+
+        return null
+    }
+
+    private fun validateDescription(): String? {
+        var descriptionTask = getDescriptionTask()
+
+        if(descriptionTask.length > 200) {
+            return "Maximo de caracteres 200"
+        }
+
+        if(descriptionTask.isEmpty()) {
+            return getString(R.string.error_description)
+        }
+
+        return null
+    }
+
+    private fun getTitleTask(): String {
+        return binding.tiTitle.text.toString()
+    }
+
+    private fun getDescriptionTask(): String {
+        return binding.tiDescription.text.toString()
     }
 }

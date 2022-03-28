@@ -46,8 +46,11 @@ class FragmentTodoList : Fragment() {
         todoViewModel.allTodo.observe(viewLifecycleOwner, Observer { todoList ->
             todoList.let {
                 todoAdapter.submitList(it)
+                showIconEmptyList()
             }
         })
+
+
     }
 
     private fun setRecyclerView() = binding.rvTodo.apply {
@@ -65,5 +68,13 @@ class FragmentTodoList : Fragment() {
         todoAdapter =  TodoListAdapter(cbListener, cvListener )
         adapter = todoAdapter
         layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun showIconEmptyList() {
+        if (todoViewModel.allTodo.value?.isEmpty() == true) {
+            binding.emptyList.visibility = View.VISIBLE
+        } else {
+            binding.emptyList.visibility = View.GONE
+        }
     }
 }

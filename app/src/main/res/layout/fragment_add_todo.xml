@@ -30,6 +30,8 @@
             app:layout_constraintStart_toEndOf="@+id/icon_title"
             app:layout_constraintTop_toTopOf="parent"
             app:errorEnabled="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="35"
             android:layout_marginStart="35dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -54,19 +56,24 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_layout_description"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="wrap_content"
             android:hint="@string/description_task"
             app:layout_constraintStart_toEndOf="@+id/icon_title"
             app:layout_constraintTop_toBottomOf="@+id/ti_layout_title"
             android:layout_marginTop="35dp"
             app:errorEnabled="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="200"
             android:layout_marginStart="35dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ti_description"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="280dp"
                 android:gravity="top"
+                android:maxLength="35"
+                android:minLines="1"
+                android:maxLines="3"
                 android:inputType="textMultiLine" />
 
         </com.google.android.material.textfield.TextInputLayout>

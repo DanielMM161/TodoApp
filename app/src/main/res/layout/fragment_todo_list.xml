@@ -6,6 +6,15 @@
     android:layout_height="wrap_content"
     tools:context="fragments.FragmentTodoList">
 
+    <ImageView
+        android:id="@+id/empty_list"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/empty_list"
+        android:visibility="gone"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fb_add_task"
         android:layout_width="wrap_content"

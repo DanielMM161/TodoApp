@@ -7,13 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.dmm.todoapp.data.model.Todo
 import com.dmm.todoapp.data.TodoRepository
 import com.dmm.todoapp.data.database.TodoDatabase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
 class TodoViewModel(application: Application) : AndroidViewModel(application) {
 
-    val allTodo: LiveData<List<Todo>>
+    var allTodo: LiveData<List<Todo>>
     val allTodoDone: LiveData<List<Todo>>
     private val todoRepository: TodoRepository
 
@@ -38,8 +40,8 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun validateTask(nameTodo: String, descriptionTodo: String): Boolean {
-        return !nameTodo.isBlank() && !descriptionTodo.isBlank()
+    fun validateTask(titleTask: String, decriptionTask: String): Boolean {
+        return !titleTask.isBlank() && !decriptionTask.isBlank()
     }
 
     fun deleteTodo(todo: Todo) {
