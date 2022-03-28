@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -84,7 +83,8 @@
                 android:id="@+id/ti_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="text" />
+                android:gravity="top"
+                android:inputType="textMultiLine" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,7 +100,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_delete"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/ButtonCancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -111,6 +111,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_edit"
+            style="@style/MaterialButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -118,7 +119,8 @@
             android:enabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_delete"
-            app:layout_constraintTop_toBottomOf="@+id/view_divider" />
+            app:layout_constraintTop_toBottomOf="@+id/view_divider"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -47,10 +47,10 @@ class FragmentDetailTodo : Fragment() {
             showDialog()
         }
 
-        binding.tiTitle.addTextChangedListener { it ->
+        binding.tiTitle.addTextChangedListener { _ ->
             enabledButtonEdit()
         }
-        binding.tiDescription.addTextChangedListener { it ->
+        binding.tiDescription.addTextChangedListener { _ ->
             enabledButtonEdit()
         }
     }
@@ -72,11 +72,11 @@ class FragmentDetailTodo : Fragment() {
     private fun enabledButtonEdit() {
         val textTitle: String = binding.tiTitle.text.toString().trim()
         val textDescription: String = binding.tiDescription.text.toString().trim()
-        binding.buttonEdit.isEnabled = textTitle != todoSelected.name.trim() || textDescription != todoSelected.description.trim()
+        binding.buttonEdit.isEnabled = (textTitle != todoSelected.name.trim() || textDescription != todoSelected.description.trim()) && (!textTitle.isBlank() || !textDescription.isBlank())
     }
 
     private fun showDialog() {
-        MaterialAlertDialogBuilder(requireContext())
+        MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
             .setTitle("${getString(R.string.delete_dialog, todoSelected.name)}")
             .setMessage("${getString(R.string.message_dialog, todoSelected.name)}")
             .setNegativeButton("${getString(R.string.no_dialog)}") { _, _ -> }

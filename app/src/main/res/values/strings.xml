@@ -16,4 +16,13 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="about_descripton">Hi I\'m Daniel Moreno Marquez From Spain and I\'m a mobile developer. This is my demostration Todo App where I do in practice my knowledge about android system and jetpack ecosystem</string>
+
+    <string name="error_title">Insert a title</string>
+    <string name="error_description">Insert a description</string>
+
+    <string name="fragment_list"><b>Task</b> List</string>
+    <string name="fragment_add"><b>Add</b> Task</string>
+    <string name="fragment_done"><b>Tasks</b> Done</string>
+    <string name="fragment_about"><b>About</b> me</string>
+    <string name="fragment_detail"><b>Task</b> Detail</string>
 </resources>

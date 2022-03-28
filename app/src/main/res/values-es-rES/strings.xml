@@ -16,4 +16,13 @@
     <string name="cancel">Cancelar</string>
     <string name="save">Guardar</string>
     <string name="about_descripton">Hola, me llamo Daniel Moreno Marquez y soy un desarrollador movil de España, Esta app es una demostración donde pongo en practica mis conocimientos del ecosistema de Android</string>
+
+    <string name="error_title">Inserta un titulo</string>
+    <string name="error_description">Inserta una descripcion</string>
+
+    <string name="fragment_list"><b>Lista</b> de Tareas</string>
+    <string name="fragment_add"><b>Agregar</b> Tarea</string>
+    <string name="fragment_done"><b>Tareas</b> Terminadas</string>
+    <string name="fragment_about"><b>Sobre</b> mi</string>
+    <string name="fragment_detail"><b>Detalle</b> de la Tarea</string>
 </resources>

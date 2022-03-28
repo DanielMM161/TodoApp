@@ -50,7 +50,8 @@ class FragmentAddTodo : Fragment() {
             viewModel.addTodo(title, description)
             findNavController().navigate(R.id.action_fragmentAddTodo_to_fragmentTodoList)
         } else {
-            Toast.makeText(requireContext(), "Debes de introducir texto en ambos campos", Toast.LENGTH_LONG).show()
+            binding.tiLayoutTitle.error = getString(R.string.error_title)
+            binding.tiLayoutDescription.error = getString(R.string.error_description)
         }
     }
 }

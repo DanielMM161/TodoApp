@@ -4,6 +4,73 @@
     <!-- Divider style -->
     <style name="Widget.TodoName.Divider" parent="">
         <item name="android:background">?attr/dividerHorizontal</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="color">@color/black</item>
+    </style>
+
+    <!-- Bottom style -->
+    <style name="AppBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView" >
+        <item name="backgroundTint">@color/white</item>
+        <item name="itemTextColor">@color/icon_no_selected</item>
+    </style>
+
+    <!-- ActionBar -->
+    <style name="Widget.TodoName.ActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="background">@color/white</item>
+        <item name="itemTextColor">@color/black</item>
+    </style>
+
+    <!-- Fab Button Add Task -->
+    <style name="fab_button" parent="">
+        <item name="background">@color/transparent</item>
+    </style>
+
+    <!-- Buttons App -->
+    <style name="AppButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Button Cancel -->
+    <style name="ButtonCancel" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@color/transparent</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Texts Inputs -->
+    <style name="TextInputs" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">?attr/colorSecondary</item>
+        <item name="hintTextColor">@color/black</item>
+        <item name="boxStrokeWidth">1dp</item>
+    </style>
+
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="materialAlertDialogTitleTextStyle">@style/TitleTextStyle</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/BodyTextStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+    </style>
+    <style name="TitleTextStyle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="BodyTextStyle" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:textColor">#A3A3A3</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="MaterialButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="backgroundTint">@color/color_states_material</item>
     </style>
 
 </resources>
